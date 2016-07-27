@@ -1,0 +1,10 @@
+{
+	"sass" : {
+		"source": "./scss/style.scss",
+		"destination": "./css/"
+	},
+    "minifyCss" : {
+        "source": "./css/style.css",
+		"destination": "./css/"
+    }
+}

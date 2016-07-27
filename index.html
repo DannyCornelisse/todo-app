@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>My TODO-app</title>
+	<meta charset="utf-8">
+	<meta name="" content="">
+	<meta name="keywords" content="">
+	<meta name="viewport" content="width=device-width, minimum-scale=1, maximum-scale=1">
+	<link rel="stylesheet" type="text/css" href="bower_components/font-awesome/css/font-awesome.min.css">
+	<link rel="stylesheet" type="text/css" href="style.css">
+</head>
+<body ng-app="myApp" ng-controller="TestController as vm">
+	<header class="todo-header">This is my Header</header>
+
+	<h2 class="todo-title">Todo</h2>
+
+	<input type="text" name="add-todo" ng-model="vm.todoItem">
+
+	<button ng-click="vm.addTodo()">add new todo</button>
+
+	<ul class="todo-list">
+		<li class="todo-item ng-cloak" ng-repeat="todo in vm.todos">
+			{{todo}}
+		</li>
+	</ul>
+
+	<img src="img/pink-panther.png" style="float: right">
+
+	<footer class="todo-footer">This is my footer</footer>
+
+	<script src="https://www.gstatic.com/firebasejs/3.2.1/firebase.js"></script>
+	<script src="https://www.gstatic.com/firebasejs/3.1.0/firebase-app.js"></script>
+	<script src="https://www.gstatic.com/firebasejs/3.1.0/firebase-auth.js"></script>
+	<script src="https://www.gstatic.com/firebasejs/3.1.0/firebase-database.js"></script>
+	
+	<!-- Leave out Storage -->
+	<!-- <script src="https://www.gstatic.com/firebasejs/3.1.0/firebase-storage.js"></script> -->
+	<script>
+	  // Initialize Firebase
+	  var config = {
+	    apiKey: "AIzaSyBjCid6AZwWTfm1LStjed9-KIUx_WxIR54",
+	    authDomain: "todo-app-e7b91.firebaseapp.com",
+	    databaseURL: "https://todo-app-e7b91.firebaseio.com",
+	    storageBucket: "",
+	  };
+	  firebase.initializeApp(config);
+	</script>
+	<script type="text/javascript" src="bower_components/angular/angular.min.js"></script>
+	<script type="text/javascript" src="js/app.js"></script>
+	<!-- controllers -->
+	<script type="text/javascript" src="js/controllers/TestController.js"></script>
+</body>
+</html>
