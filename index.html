@@ -9,7 +9,7 @@
 	<link rel="stylesheet" type="text/css" href="bower_components/font-awesome/css/font-awesome.min.css">
 	<link rel="stylesheet" type="text/css" href="style.css">
 </head>
-<body ng-app="myApp" ng-controller="TestController as vm">
+<body ng-app="myApp" ng-controller="TodoController as vm">
 	<header class="todo-header">This is my Header</header>
 
 	<h2 class="todo-title">Todo</h2>
@@ -19,10 +19,14 @@
 	<button ng-click="vm.addTodo()">add new todo</button>
 
 	<ul class="todo-list">
-		<li class="todo-item ng-cloak" ng-repeat="todo in vm.todos">
-			{{todo}}
+		<li class="todo-item" ng-cloak ng-repeat="todo in vm.todos">
+			{{todo.name}}
+			<i class="fa fa-times" aria-hidden="true" ng-click="vm.deleteTodo(item)"></i>
 		</li>
+
 	</ul>
+
+	<pre>{{vm.todos | json}}</pre>
 
 	<img src="img/pink-panther.png" style="float: right">
 
@@ -48,6 +52,6 @@
 	<script type="text/javascript" src="bower_components/angular/angular.min.js"></script>
 	<script type="text/javascript" src="js/app.js"></script>
 	<!-- controllers -->
-	<script type="text/javascript" src="js/controllers/TestController.js"></script>
+	<script type="text/javascript" src="js/controllers/TodoController.js"></script>
 </body>
 </html>
