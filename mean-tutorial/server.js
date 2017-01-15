@@ -43,12 +43,25 @@ app.get('/home', function(req, res){
 app.post('/users', function(req, res){
 
 	var user = new User();
+ 
 	// Set properties equal to the body of the request ()
 	user.username = req.body.username;
 	user.password = req.body.password;
 	user.email = req.body.email;
-	user.save();
-	res.send("user created!")
+
+	if(req.body.username == null || req.body.username == '' ||
+		req.body.password == null || req.body.password == '' ||
+		req.body.email == null || req.body.email == ''){
+		res.send('please ensure username, email and password are provided!');
+	} else {
+		user.save(function(err){
+		if(err){
+			res.send('username or email already exists!' + err);
+		} else {
+			res.send("user created!");
+		}
+	});
+	}
 });
 
 // Create port to listen to
