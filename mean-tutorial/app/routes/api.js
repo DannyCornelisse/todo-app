@@ -23,16 +23,14 @@ module.exports = function(router){
 		user.password = req.body.password;
 		user.email = req.body.email;
 
-		if(req.body.username == null || req.body.username == '' ||
-			req.body.password == null || req.body.password == '' ||
-			req.body.email == null || req.body.email == ''){
-			res.send('please ensure username, email and password are provided!');
+		if(req.body.username == null || req.body.username == '' || req.body.password == null || req.body.password == '' || req.body.email == null || req.body.email == ''){
+			res.json({success: false, message: 'please ensure username, email and password are provided bla!'});
 		} else {
 			user.save(function(err){
 			if(err){
-				res.send('username or email already exists!' + err);
+				res.json({success: false, message: 'username or email already exists!'});
 			} else {
-				res.send("user created!");
+				res.json({success: true, message: "user created!"});
 			}
 		});
 		}
