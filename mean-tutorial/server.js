@@ -28,7 +28,7 @@ app.use(morgan('dev'));
 
 // Use parser to parse req body into json
 app.use(bodyParser.json()); // for parsing application/json
-app.use(bodyParser.urlencoded({ extended: true })); // for parsing application/x-www-form-urlencoded
+app.use(bodyParser.urlencoded({ extended: true })); // for parsing application/x-www-form-urlencoded (key-value pair in Postman)
 
 // Give user access to static location (public)
 app.use(express.static(__dirname + '/public'));
