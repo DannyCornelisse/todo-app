@@ -32,6 +32,9 @@ UserSchema.pre('save', function(next){
     
 });
 
+
+// Method to comparePassword. Is attached to UserSchema, which in turn is used by var user in api.js (var user = new User()), 
+// therefore inherits this method
 UserSchema.methods.comparePassword = function(password){
     return bcrypt.compareSync(password, this.password);
 }
