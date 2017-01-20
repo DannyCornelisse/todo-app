@@ -1,0 +1,28 @@
+<div class="page-header">
+	<h1>User login</h1>	
+</div>
+<!-- user register.regUser() instead of this.regUser() because of the controllerAs nick-name you gave -->
+<form ng-submit="register.regUser(regData)">
+	<!-- username -->
+	<label for="username">username:</label>
+	<input class="form-control" type="text" name="username" placeholder="username" ng-model="register.regData.username">
+	<br/>
+	<!-- password -->
+	<label for="password">password:</label>
+	<input class="form-control" type="password" name="password" placeholder="password" ng-model="register.regData.password">
+	<br/>
+	<button class="btn btn-primary" type="submit">Login</button>
+</form>
+
+<div class="jumbotron text-center" ng-show="register.loading">
+	<span class="glyphicon glyphicon-repeat" spinner></span>
+	<p>loadingg....</p>
+</div>
+
+<div class="row show-hide-message" ng-show="register.successMsg">
+	<div class="alert alert-success">{{register.successMsg}}</div>
+</div>
+
+<div class="row show-hide-message" ng-show="register.errorMsg">
+	<div class="alert alert-danger">{{register.errorMsg}}</div>
+</div>

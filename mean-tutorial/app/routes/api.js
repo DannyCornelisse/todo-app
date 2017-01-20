@@ -7,13 +7,8 @@ module.exports = function(router){
 
 	// Make request to '/home' route
 	// Bind all methods to 'router' object
-	router.get('/home', function(req, res){
 
-		// Respond with
-		res.send('Hello from /home mudafaka');
-	});
-
-	// Post to localhost:8080/users // Test posts with postman or other rest client 
+	// Post to localhost:8080/users // Test posts with postman or other rest client // Registration user
 	router.post('/users', function(req, res){
 
 		var user = new User();
@@ -34,6 +29,24 @@ module.exports = function(router){
 			}
 		});
 		}
+	});
+
+	// Login User
+	router.post('/authenticate', function(req, res){
+		User.findOne({username: req.body.username}).select('email username password').exec(function(err, user){
+			if(err) throw err;
+
+			if(!user){
+				res.json({success: false, message: 'could not authenticate user!'});
+			} else if (user){
+				var validPassword = user.comparePassword(req.body.password);
+				if(!validPassword){
+					res.json({success: false, message: 'could not authenticate password!'});
+				} else {
+					res.json({success: true, message: 'User authenticated!'});
+				}
+			}
+		})
 	});
 
 	// Return the route that user is trying to access

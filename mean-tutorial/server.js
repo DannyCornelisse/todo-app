@@ -34,7 +34,7 @@ app.use(bodyParser.urlencoded({ extended: true })); // for parsing application/x
 app.use(express.static(__dirname + '/public'));
 
 // Let app use the appRoutes and put '/api' as a prefix to the routes: e.g. http://localhost:8080/api/users
-app.use('/api', appRoutes);
+app.use('/api/', appRoutes);
 
 // Connect mongoose
 mongoose.connect('mongodb://localhost:27017/tutorial', function(err){

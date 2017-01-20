@@ -15,6 +15,10 @@ angular.module('appRoutes',['ngRoute'])
 			controller: 'regCtrl',
 			controllerAs: 'register'
 		})
+		.when('/login', {
+			templateUrl: 'app/views/pages/users/login.html'
+			// Controller and controllerAs defined in index.html to use in all routes
+		})
 		.otherwise( {redirectTo: '/'} )
 
 		$locationProvider.html5Mode(true);
