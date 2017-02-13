@@ -1,5 +1,11 @@
+// Private stuff
+
 // Get User model
-var User = require('../models/user'); 
+var User = require('../models/user');
+// Json webtoken to keep user logged in
+var jwt = require('jsonwebtoken');
+// Create secret string
+var secret = 'harrypotter';
 
 
 // Public
@@ -48,14 +54,21 @@ module.exports = function(router){
 				if(!validPassword){
 					res.json({success: false, message: 'could not authenticate password!'});
 				} else {
-					res.json({success: true, message: 'User authenticated!'});
+					// Create webtoken that expires after 24h
+					var token = jwt.sign({username: user.username, email: user.email}, secret, {expiresIn: '24h'});
+					// Respond with succes (bool), message (string), token(string)
+					res.json({
+						success: true, 
+						message: 'User authenticated!', 
+						token: token
+					});
 				}
 
 			}
 		})
 	});
 
-	// Return the route that user is trying to access
+	// Return the router that user is trying to access
 	return router;
 
 }
