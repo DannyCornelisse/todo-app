@@ -19,6 +19,12 @@ angular.module('appRoutes',['ngRoute'])
 			templateUrl: 'app/views/pages/users/login.html'
 			// Controller and controllerAs defined in index.html to use in all routes
 		})
+		.when('/logout', {
+			templateUrl: 'app/views/pages/users/logout.html'
+		})
+		.when('/profile', {
+			templateUrl: 'app/views/pages/users/profile.html'
+		})
 		.otherwise( {redirectTo: '/'} )
 
 		$locationProvider.html5Mode(true);

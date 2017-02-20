@@ -68,6 +68,30 @@ module.exports = function(router){
 		})
 	});
 
+	// Middleware use()
+	router.use(function(req, res, next){
+		// Get token from request from either: token, url, x-access-token???
+		var token = req.body.token || req.body.query || req.headers['x-access-token'];
+
+		if(token){
+			// Verify token
+			jwt.verify(token, secret, function(err, decoded){
+				if (err) {
+					res.json({success: false, message: 'Token invalid'});
+				} else {
+					req.decoded = decoded;
+					next();
+				}
+			})
+		} else {
+			res.json({success: false, message: 'No token provided!'});
+		}
+	});
+
+	router.post('/me', function(req, res){
+		res.send(req.decoded);
+	});
+
 	// Return the router that user is trying to access
 	return router;
 

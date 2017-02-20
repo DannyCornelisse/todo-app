@@ -5,11 +5,11 @@
 <form ng-submit="main.doLogin(loginData)">
 	<!-- username -->
 	<label for="username">username:</label>
-	<input class="form-control" type="text" name="username" placeholder="username" ng-model="main.loginData.username">
+	<input class="form-control" type="text" name="username" placeholder="username" ng-model="main.loginData.username" value="main.loginData.username">
 	<br/>
 	<!-- password -->
 	<label for="password">password:</label>
-	<input class="form-control" type="password" name="password" placeholder="password" ng-model="main.loginData.password">
+	<input class="form-control" type="password" name="password" placeholder="password" ng-model="main.loginData.password" value="main.loginData.password">
 	<br/>
 	<button class="btn btn-primary" type="submit">Login</button>
 </form>
