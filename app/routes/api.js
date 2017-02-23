@@ -23,6 +23,7 @@ module.exports = function(router){
 		user.username = req.body.username;
 		user.password = req.body.password;
 		user.email = req.body.email;
+		user.todos = req.body.todos;
 
 		if(req.body.username == null || req.body.username == '' || req.body.password == null || req.body.password == '' || req.body.email == null || req.body.email == ''){
 			res.json({success: false, message: 'please ensure username, email and password are provided bla!'});
@@ -31,7 +32,7 @@ module.exports = function(router){
 			if(err){
 				res.json({success: false, message: 'username or email already exists!'});
 			} else {
-				res.json({success: true, message: "user created!"});
+				res.json({success: true, message: "user created!", user: user});
 			}
 		});
 		}
@@ -87,7 +88,7 @@ module.exports = function(router){
 			res.json({success: false, message: 'No token provided!'});
 		}
 	});
-
+	// route for token
 	router.post('/me', function(req, res){
 		res.send(req.decoded);
 	});

@@ -13,6 +13,7 @@ angular.module('mainController',['authServices'])
 				Auth.getUser().then(function(data){
 
 					app.username = data.data.username;
+					console.log(data);
 					app.useremail = data.data.email;
 
 				});

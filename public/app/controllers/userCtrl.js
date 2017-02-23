@@ -28,6 +28,5 @@ angular.module('userControllers',['userServices'])
 						app.errorMsg = data.data.message; 
 					}
 				})
-
 		}
 	});
