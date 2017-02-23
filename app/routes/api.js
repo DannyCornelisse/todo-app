@@ -30,6 +30,18 @@ module.exports = function(router){
 			}
 		})
 	});
+
+	router.put('/users/:username', function(req, res) {
+		console.log('I recieved a put request');
+		User.update({username: req.params.username}, {$set: {todos: req.body}}, function(err, raw){
+			if(err){
+				res.send(err);
+			} else {
+				res.json({raw: raw});
+			}
+		})
+	});
+	
 	router.post('/users', function(req, res){
 
 		var user = new User();

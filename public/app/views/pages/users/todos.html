@@ -3,7 +3,16 @@
 </div>
 
 <div class="todo-list-container">
+	<label>Add a todo!</label>
+	<input type="text" name="newTodo" ng-model="todos.newTodo">
 	<ul class="todo-list">
-		<li class="todo-list-item" ng-repeat="todo in todos.todos">{{todo}}</li>
+		<li class="todo-list-item" ng-repeat="todo in todos.todos">
+			<span class="todo-list-item-name">{{todo}}</span>
+			<button ng-click="todos.getCurrentTodoIndex($index)">EDIT</button>
+		</li>
 	</ul>
+	<form ng-show="todos.showEditField" ng-submit="todos.editTodo($index)">
+		<input type="text" name="todoName" ng-model="todos.editedTodo">
+		<input type="submit" value="Send!">	
+	</form>
 </div>

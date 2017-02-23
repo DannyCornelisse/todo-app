@@ -18,10 +18,8 @@ angular.module('mainController',['authServices'])
 
 				});
 			} else {
-				
 				app.username = undefined;
 				app.isLoggedIn = false;
-				
 			}
 		});
 

@@ -8,5 +8,9 @@ angular.module('userServices', [])
 			return $http.post('/api/users', regData)
 		};
 
+		userFactory.updateTodo = function(newTodo){
+			return $http.put('/');
+		}
+
 		return userFactory;
 	});
