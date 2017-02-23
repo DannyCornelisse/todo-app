@@ -15,6 +15,21 @@ module.exports = function(router){
 	// Bind all methods to 'router' object
 
 	// Post to localhost:8080/users // Test posts with postman or other rest client // Registration user
+	router.get("/users/:username", function(req, res){
+		console.log('I recieved a get request');
+		console.log(req.params);
+		User.findOne({username: req.params.username}, function(err, user){
+			if (err){
+				res.send(err);
+			} else {
+				 if(!user){
+				 	res.send('User doesnt exist');
+				 } else {
+				 	res.json({user: user});
+				 }
+			}
+		})
+	});
 	router.post('/users', function(req, res){
 
 		var user = new User();

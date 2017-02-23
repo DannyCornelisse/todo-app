@@ -1,11 +1,12 @@
 angular.module('mainController',['authServices'])
 	// Take Auth as parameter
-	.controller('mainCtrl', function(Auth, $timeout, $location, $rootScope){
+	.controller('mainCtrl', function($http, Auth, $timeout, $location, $rootScope){
 		
 		var app = this;
 
 		// When route changes, invoke function
 		$rootScope.$on('$routeChangeStart', function(){
+
 			if(Auth.isLoggedIn()){
 
 				app.isLoggedIn = true;
@@ -13,7 +14,6 @@ angular.module('mainController',['authServices'])
 				Auth.getUser().then(function(data){
 
 					app.username = data.data.username;
-					console.log(data);
 					app.useremail = data.data.email;
 
 				});

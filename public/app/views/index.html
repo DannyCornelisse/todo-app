@@ -20,6 +20,7 @@
     <!-- Controllers -->
     <script src="app/controllers/userCtrl.js"></script>
     <script src="app/controllers/mainCtrl.js"></script>
+    <script src="app/controllers/todoCtrl.js"></script>
 
     <!-- Services -->
     <script src="app/services/userServices.js"></script>
@@ -48,6 +49,7 @@
           <ul class="nav navbar-nav">
             <li class="active"><a href="/">Home</a></li>
             <li><a href="/login" ng-hide="main.isLoggedIn">Login</a></li>
+            <li><a href="/todos" ng-show="main.isLoggedIn">Todos</a></li>
             <li><a href="#" ng-click="main.logout()" ng-show="main.isLoggedIn">Logout</a></li>
             <li><a href="/register" ng-hide="main.isLoggedIn">Register</a></li>
             <li class="dropdown">

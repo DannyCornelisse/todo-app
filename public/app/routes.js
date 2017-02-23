@@ -25,6 +25,11 @@ angular.module('appRoutes',['ngRoute'])
 		.when('/profile', {
 			templateUrl: 'app/views/pages/users/profile.html'
 		})
+		.when('/todos', {
+			templateUrl: 'app/views/pages/users/todos.html',
+			controller: 'todoCtrl', 
+			controllerAs: 'todos'
+		})
 		.otherwise( {redirectTo: '/'} )
 
 		$locationProvider.html5Mode(true);
