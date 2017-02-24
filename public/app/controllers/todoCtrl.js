@@ -10,22 +10,35 @@ angular.module('todoController',['authServices'])
 		app.getCurrentTodoIndex = function(index){
 			app.currentTodoIndex = index;
 			app.showEditField = true;
-			console.log(app.showEditField);
+			app.editedTodo = app.todos[app.currentTodoIndex];
 		}
 
 		app.editTodo = function(){
-			console.log(app.editedTodo);
 			if(app.currentTodoIndex !== null){
 				var index = app.currentTodoIndex;
 				app.todos[index] = app.editedTodo;
-				console.log(app.todos);
 			}
+
 			$http.put('api/users/' + app.username, app.todos).then(function(data){
 				console.log(data);
 			});
+
 			app.currentTodoIndex = null;
 			app.showEditField = false;
 			app.editedTodo = "";
+		}
+
+		app.addTodo = function(){
+			console.log(app.newTodo);
+			if(app.newTodo !== ""){	
+				app.todos.push(app.newTodo);
+
+				$http.put('api/users/' + app.username, app.todos).then(function(data){
+					console.log(data);
+				});
+
+				app.newTodo = "";
+			}
 		}
 
 		if(Auth.isLoggedIn()){
