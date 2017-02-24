@@ -12,6 +12,7 @@
 		<li class="todo-list-item" ng-repeat="todo in todos.todos track by $index">
 			<span class="todo-list-item-name">{{todo}}</span>
 			<button ng-click="todos.getCurrentTodoIndex($index)">EDIT</button>
+			<button ng-click="todos.deleteTodo($index)">DELETE</button>
 		</li>
 	</ul>
 	<form ng-show="todos.showEditField" ng-submit="todos.editTodo($index)">

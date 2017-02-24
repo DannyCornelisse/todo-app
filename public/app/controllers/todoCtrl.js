@@ -26,7 +26,7 @@ angular.module('todoController',['authServices'])
 			app.currentTodoIndex = null;
 			app.showEditField = false;
 			app.editedTodo = "";
-		}
+		};
 
 		app.addTodo = function(){
 			console.log(app.newTodo);
@@ -39,7 +39,15 @@ angular.module('todoController',['authServices'])
 
 				app.newTodo = "";
 			}
-		}
+		};
+
+		app.deleteTodo = function(index){
+			app.todos.splice(index, 1);
+
+			$http.put('api/users/' + app.username, app.todos).then(function(data){
+				console.log(data);
+			});
+		};
 
 		if(Auth.isLoggedIn()){
 			Auth.getUser().then(function(data){
