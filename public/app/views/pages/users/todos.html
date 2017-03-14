@@ -2,6 +2,8 @@
 	<h1>This is the todo page</h1>
 </div>
 
+<h3 class="empty-todo-message" ng-show="todos.noTodos">Hi <b>{{todos.username}}</b>, you don't have anything to do. Add a todo below you lazy person!</h3>
+
 <div class="todo-list-container">
 	<label>Add a todo!</label>
 	<form ng-submit="todos.addTodo()">
@@ -11,12 +13,14 @@
 	<ul class="todo-list">
 		<li class="todo-list-item" ng-repeat="todo in todos.todos track by $index">
 			<span class="todo-list-item-name">{{todo}}</span>
-			<button ng-click="todos.getCurrentTodoIndex($index)">EDIT</button>
+			<button ng-click="todos.toggleEditField($index)">EDIT</button>
 			<button ng-click="todos.deleteTodo($index)">DELETE</button>
 		</li>
 	</ul>
 	<form ng-show="todos.showEditField" ng-submit="todos.editTodo($index)">
-		<input type="text" name="todoName" ng-model="todos.editedTodo">
-		<input type="submit" value="Send!">	
+		<input type="text" name="todoName" ng-model="todos.editedTodoValue">
+		<input type="submit" value="Update todo!">
 	</form>
+
+	<span ng-model="todos.showEditField"> {{todos.showEditField}} </span>
 </div>

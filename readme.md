@@ -18,4 +18,4 @@ to see database
 - start robomongo
 - go to right database
 - select desired collection/endpoint
-- doubleclick to see data
+- doubleclick to see datas
